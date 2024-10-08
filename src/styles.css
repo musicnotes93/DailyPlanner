@@ -43,9 +43,14 @@ ul {
   padding-left: 0;
 }
 
-li {
+li span {
   color: #705c53;
+  width: 100px;
+  overflow-wrap: normal;
 }
+
+
+
 
 input[type="text"] {
   padding: 10px;
