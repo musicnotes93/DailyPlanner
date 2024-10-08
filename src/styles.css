@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  border-box: box-sizing;
+}
+
+body {
+  background-color: #eddfe0;
+  font-family: "Baskerville", serif;
+}
+
+h1,
+h2 {
+  color: #705c53;
+}
+
+.addTask {
+  display: flex;
+  gap: 10px;
+}
+
+.add-button {
+  background-color: #a0d683;
+  color: #705c53;
+}
+
+.delete-button {
+  background-color: #da8359;
+  color: #705c53;
+}
+
+.to-do-list {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  margin-top: 50px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  color: #705c53;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: solid #b7b7b7;
+}
+
+button {
+  border: solid #b7b7b7;
+  padding: 10px;
+  background-color: #f5f5f7;
+  color: #b7b7b7;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+::placeholder {
+  color: #b7b7b7;
+}
+
+label {
+  color: #705c53;
+}
+
+input[type="date"] {
+  color: #b7b7b7;
+  border: solid #b7b7b7;
+}
