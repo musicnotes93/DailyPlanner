@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import "./styles.css";
 
 function ToDoList() {
-  const [isStriked, setIsStriked] = useState(false);
   const [date, setDate] = useState("");
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
+  const [strikedTasks, setStrikedTasks] = useState([]);
 
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -14,6 +14,7 @@ function ToDoList() {
     if (storedDate) {
       setDate(storedDate);
     }
+    setStrikedTasks(new Array(storedTasks.length).fill(false));
   }, []);
 
   useEffect(() => {
@@ -24,9 +25,7 @@ function ToDoList() {
     localStorage.setItem("selectedDate", date);
   }, [date]);
 
-  const handleClick = () => {
-    setIsStriked(!isStriked);
-  };
+
 
   function handleChange(event) {
     let dateWeGet = event.target.value;
@@ -42,14 +41,33 @@ function ToDoList() {
   function addTask() {
     if (newTask.trim() !== "") {
       setTasks((t) => [...t, newTask]);
+      setStrikedTasks((s) => [...s, false]);
       setNewTask("");
+    }
+  }
+
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      addTask();
     }
   }
 
   function deleteTask(index) {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
+    const updatedStrikes = strikedTasks.filter((_, i) => i !== index);
+    setStrikedTasks(updatedStrikes);
   }
+
+ 
+
+  function toggleStrike(index) {
+    const updatedStrikes = [...strikedTasks];
+    updatedStrikes[index] = !updatedStrikes[index]; 
+    setStrikedTasks(updatedStrikes);
+  }
+
+  
 
   function moveTaskUp(index) {
     if (index > 0) {
@@ -59,6 +77,13 @@ function ToDoList() {
         updatedTasks[index],
       ];
       setTasks(updatedTasks);
+      const updatedStrikes = [...strikedTasks];
+      [updatedStrikes[index], updatedStrikes[index - 1]] = [
+        updatedStrikes[index - 1],
+        updatedStrikes[index],
+      ];
+      setStrikedTasks(updatedStrikes);
+    
     }
   }
 
@@ -70,6 +95,12 @@ function ToDoList() {
         updatedTasks[index],
       ];
       setTasks(updatedTasks);
+      const updatedStrikes = [...strikedTasks];
+      [updatedStrikes[index], updatedStrikes[index + 1]] = [
+        updatedStrikes[index + 1],
+        updatedStrikes[index],
+      ];
+      setStrikedTasks(updatedStrikes);
     }
   }
 
@@ -77,7 +108,7 @@ function ToDoList() {
     <div className="to-do-list">
       <h1>Daily Planner</h1>
       <div>
-        <label>Choose Date:</label>
+        <label>Choose Date: </label>
         <input type="date" onChange={handleChange} />
       </div>
       <div className="addTask">
@@ -86,6 +117,7 @@ function ToDoList() {
           placeholder="Enter a task..."
           value={newTask}
           onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
         />
         <button className="add-button" onClick={addTask}>
           Add
@@ -95,9 +127,9 @@ function ToDoList() {
       <ul>
         {tasks.map((task, index) => (
           <li key={index} className="listItem">
-            <input type="checkbox" onClick={handleClick} />
+            <input type="checkbox" onClick={() => toggleStrike(index)} />
             <span
-              style={{ textDecoration: isStriked ? "line-through" : "none" }}
+              style={{ textDecoration: strikedTasks[index] ? "line-through" : "none" }}
               className="text"
             >
               {task}
