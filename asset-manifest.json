@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DailyPlanner/static/css/main.011d23ac.css",
+    "main.js": "/DailyPlanner/static/js/main.7d24ddfb.js",
+    "static/js/453.ed3810f9.chunk.js": "/DailyPlanner/static/js/453.ed3810f9.chunk.js",
+    "index.html": "/DailyPlanner/index.html",
+    "main.011d23ac.css.map": "/DailyPlanner/static/css/main.011d23ac.css.map",
+    "main.7d24ddfb.js.map": "/DailyPlanner/static/js/main.7d24ddfb.js.map",
+    "453.ed3810f9.chunk.js.map": "/DailyPlanner/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.011d23ac.css",
+    "static/js/main.7d24ddfb.js"
+  ]
+}
