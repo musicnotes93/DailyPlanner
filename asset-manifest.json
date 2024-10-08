@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/DailyPlanner/static/css/main.011d23ac.css",
+    "main.css": "/DailyPlanner/static/css/main.ff207bd3.css",
     "main.js": "/DailyPlanner/static/js/main.f34ba713.js",
     "static/js/453.ed3810f9.chunk.js": "/DailyPlanner/static/js/453.ed3810f9.chunk.js",
     "index.html": "/DailyPlanner/index.html",
-    "main.011d23ac.css.map": "/DailyPlanner/static/css/main.011d23ac.css.map",
+    "main.ff207bd3.css.map": "/DailyPlanner/static/css/main.ff207bd3.css.map",
     "main.f34ba713.js.map": "/DailyPlanner/static/js/main.f34ba713.js.map",
     "453.ed3810f9.chunk.js.map": "/DailyPlanner/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.011d23ac.css",
+    "static/css/main.ff207bd3.css",
     "static/js/main.f34ba713.js"
   ]
 }
