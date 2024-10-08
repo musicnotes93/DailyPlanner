@@ -10,11 +10,19 @@ function ToDoList() {
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(storedTasks);
+    const storedDate = localStorage.getItem("selectedDate");
+    if (storedDate) {
+      setDate(storedDate);
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem("selectedDate", date);
+  }, [date]);
 
   const handleClick = () => {
     setIsStriked(!isStriked);
